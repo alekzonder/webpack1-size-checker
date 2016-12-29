@@ -1,5 +1,5 @@
 #!/bin/bash
-#!/
+
 if [ -z "$WEBPACK_SIZE_CHECKER_HOST" ]; then
     echo "export env var WEBPACK_SIZE_CHECKER_HOST in your ~/.bashrc"
     exit 1
@@ -13,4 +13,4 @@ if [ -z "$package" ]; then
     exit 1
 fi
 
-curl -XPOST "http://localhost:9001/check?package=${package}&require=${require}"
+curl -XPOST "http://$WEBPACK_SIZE_CHECKER_HOST/check?package=${package}&require=${require}"
