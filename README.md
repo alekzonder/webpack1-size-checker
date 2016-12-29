@@ -15,6 +15,9 @@ docker run --rm -t alekzonder/webpack-size-checker /app/start.sh superagent
 # OR with version
 docker run --rm -t alekzonder/webpack-size-checker /app/start.sh superagent@3.3.0
 
+# change require module string
+
+docker run --rm -t alekzonder/webpack-size-checker /app/start.sh lodash@4 lodash/get
 
 ```
 
