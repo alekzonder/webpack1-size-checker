@@ -36,7 +36,7 @@ app.post('/check', function (req, res) {
         args.push(rqr);
     }
 
-    docker.run('webpack-size-checker', args, res, {Rm: true}, function (err, data, container) {
+    docker.run('alekzonder/webpack1-size-checker', args, res, {Rm: true}, function (err, data, container) {
         if (err) {
             console.log(err);
         }

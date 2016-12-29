@@ -6,6 +6,23 @@
 docker pull alekzonder/webpack1-size-checker:latest
 ```
 
+## usage as service
+
+```
+docker run --detach=true -v /var/run/docker.sock:/var/run/docker.sock -p 9001:9001 --name webpack1-size-checker -t alekzonder/webpack1-size-checker
+
+curl -XPOST "http://localhost:9001/check?package=lodash&require=lodash/get"
+
+# OR download bash script to /usr/local/bin
+
+wget -O /usr/local/bin/wp_size "https://raw.githubusercontent.com/alekzonder/webpack1-size-checker/master/wp_size.sh" && chmod +x /usr/local/bin/wp_size
+
+# set WEBPACK_SIZE_CHECKER_HOST env var in your ~/.bashrc
+# OR set before run
+
+WEBPACK_SIZE_CHECKER_HOST=localhost:9001 wp_size lodash lodash/get
+```
+
 ## usage image for checking
 
 ```
@@ -19,16 +36,6 @@ docker run --rm -t alekzonder/webpack1-size-checker /app/start.sh superagent@3.3
 
 docker run --rm -t alekzonder/webpack1-size-checker /app/start.sh lodash@4 lodash/get
 
-```
-
-## usage as service
-
-```
-docker run --detach=true -v /var/run/docker.sock:/var/run/docker.sock -p 9001:9001 -t alekzonder/webpack1-size-checker --name webpack1-size-checker
-
-curl -XPOST "http://localhost:9001/check?package=lodash&require=lodash/get"
-
-OR download bash script to /usr/local/bin
 ```
 
 ### output
