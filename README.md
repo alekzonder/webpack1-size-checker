@@ -6,19 +6,29 @@
 docker pull alekzonder/webpack1-size-checker:latest
 ```
 
-## usage
+## usage image for checking
 
 ```
 
-docker run --rm -t alekzonder/webpack-size-checker /app/start.sh superagent
+docker run --rm -t alekzonder/webpack1-size-checker /app/start.sh superagent
 
 # OR with version
-docker run --rm -t alekzonder/webpack-size-checker /app/start.sh superagent@3.3.0
+docker run --rm -t alekzonder/webpack1-size-checker /app/start.sh superagent@3.3.0
 
 # change require module string
 
-docker run --rm -t alekzonder/webpack-size-checker /app/start.sh lodash@4 lodash/get
+docker run --rm -t alekzonder/webpack1-size-checker /app/start.sh lodash@4 lodash/get
 
+```
+
+## usage as service
+
+```
+docker run --detach=true -v /var/run/docker.sock:/var/run/docker.sock -p 9001:9001 -t alekzonder/webpack1-size-checker --name webpack1-size-checker
+
+curl -XPOST "http://localhost:9001/check?package=lodash&require=lodash/get"
+
+OR download bash script to /usr/local/bin
 ```
 
 ### output
